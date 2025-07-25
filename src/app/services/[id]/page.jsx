@@ -1,7 +1,10 @@
-import Link from 'next/link';
 import React from 'react';
 
-const ServicesPage = () => {
+
+
+
+const ServicesDetails = ({ params }) => {
+    const { id } = params
     const data = [
         {
             "_id": "1",
@@ -125,28 +128,27 @@ const ServicesPage = () => {
         }
     ]
 
-    return (
-        <div className="container mx-auto px-4 py-10">
-            <h2 className="text-3xl font-bold text-center mb-10 text-primary">Our Services</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {data.map((service) => (
-                    <Link href={`/services/${service._id}`} key={service._id}>
-                        <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                            <img
-                                src={service.image}
-                                alt={service.name}
-                                className="w-full h-48 object-cover"
-                            />
-                            <div className="p-4">
-                                <h3 className="text-xl text-gray-700 font-semibold text-primary mb-2">{service.name}</h3>
-                                <p className="text-sm text-gray-600">{service.description}</p>
-                            </div>
-                        </div>
-                    </Link>
-                ))}
+    const service = data.find((d) => d._id === id);
+
+    if (!service) {
+        return (
+            <div className="text-center py-10">
+                <h2 className="text-xl font-bold text-red-600">Service Not Found</h2>
             </div>
+        );
+    }
+
+    return (
+        <div className="max-w-3xl mx-auto p-6">
+            <img
+                src={service.image}
+                alt={service.name}
+                className="w-full h-64 object-cover rounded-md mb-4"
+            />
+            <h1 className="text-3xl font-bold text-primary mb-2">{service.name}</h1>
+            <p className="text-gray-700">{service.description}</p>
         </div>
     );
 };
 
-export default ServicesPage;
+export default ServicesDetails;
