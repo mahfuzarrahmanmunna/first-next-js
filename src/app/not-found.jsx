@@ -6,6 +6,7 @@ const ErrorPage = () => {
         <div>
             <h1>404 NOT FOUND</h1>
             <Link href='/'>
+                
                 Go Back to Home
             </Link>
         </div>
