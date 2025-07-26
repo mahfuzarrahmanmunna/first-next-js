@@ -4,7 +4,8 @@ import React from 'react';
 
 
 const ServicesDetails = ({ params }) => {
-    const { id } = params
+    const id = params?.id
+    console.log(id);
     const data = [
         {
             "_id": "1",
