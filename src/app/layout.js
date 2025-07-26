@@ -23,9 +23,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-4xl mx-auto`}
       >
-        <nav>
-          <Navbar />
-        </nav>
+        <Navbar />
         <main className="min-h-[700px] place-content-center place-items-center">
           {children}
         </main>
